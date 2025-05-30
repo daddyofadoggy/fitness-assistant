@@ -1,0 +1,21 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+openai = "*"
+scikit-learn = "*"
+pandas = "*"
+flask = "*"
+urllib3 = "==1.26"
+psycopg2-binary = "==2.9.9"
+
+[dev-packages]
+tqdm = "*"
+notebook = "==7.1.2"
+jupyter = "*"
+ipywidgets = "*"
+
+[requires]
+python_version = "3.9"
