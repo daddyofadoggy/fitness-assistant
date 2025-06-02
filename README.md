@@ -62,7 +62,7 @@ You can find the data in [`data/data.csv`](data/data.csv).
 Since we use OpenAI, you need to provide the API key:
 
 1. Install `direnv`. If you use Ubuntu, run `sudo apt install direnv` and then `direnv hook bash >> ~/.bashrc`.
-2. Copy `.envrc_template` into `.envrc` and insert your key there.
+2. Insert your key into into `.env`.
 3. For OpenAI, it's recommended to create a new project and use a separate key.
 4. Run `direnv allow` to load the key into your environment.
 
