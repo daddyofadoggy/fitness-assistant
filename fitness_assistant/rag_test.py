@@ -5,87 +5,22 @@
 
 
 import pandas as pd
-
-
-# In[3]:
-
-
 import minsearch
-
-
-# In[4]:
-
-
+#import os 
 df = pd.read_csv('../data/data.csv')
-df.shape
-
-
-# In[5]:
-
-
-df.head()
-
-
-# In[6]:
-
-
-df.columns  
-
-
-# In[7]:
-
-
 documents = df.to_dict(orient='records')
-
-
-# In[8]:
-
-
-#documents
-
-
-# In[9]:
-
-
 index = minsearch.Index(text_fields=['exercise_name', 'type_of_activity', 'type_of_equipment',
        'body_part', 'type', 'muscle_groups_activated', 'instructions'],
                         keyword_fields=[])
-
-
-# In[10]:
-
-
 index.fit(documents)
-
-
-# In[ ]:
-
-
-
 
 
 # ## RAG flow ##
 
-# In[49]:
-
-
 import os
-
-
-# In[50]:
-
-
-#os.environ['OPENAI_API_KEY'] = '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'
-
-
-# In[51]:
-
-
 from openai import OpenAI
+print(os.environ['OPENAI_API_KEY'])
 client = OpenAI()
-
-
-# In[52]:
 
 
 def search(query):
@@ -99,15 +34,6 @@ def search(query):
     )
 
     return results
-
-
-# In[ ]:
-
-
-#search('glutes')
-
-
-# In[53]:
 
 
 prompt_template = """
@@ -171,6 +97,7 @@ answer = rag(question)
 print(answer)
 
 
+'''
 # In[57]:
 
 
@@ -577,7 +504,6 @@ df_eval['Relevance'].value_counts(normalize = True)
 
 
 # In[ ]:
-
-
+'''
 
 

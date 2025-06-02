@@ -4,8 +4,9 @@ import json
 from time import time
 from openai import OpenAI
 import os 
-
-os.environ['OPENAI_API_KEY'] = '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'
+from dotenv import load_dotenv
+load_dotenv()
+#print(os.environ['OPENAI_API_KEY'])
 
 client = OpenAI()
 #print("Ingest module path:", ingest.__file__)

@@ -4,17 +4,17 @@ from flask import Flask, request, jsonify
 
 from rag_utils import rag
 
+import db
+
 app = Flask(__name__)
-print(app)
 
-@app.route("/", methods=["GET"])
+@app.route('/')
 def home():
-    return "Hello, Flask is working!", 200
-
+    return '<h1>Welcome to My Flask App!</h1><p>We are glad to have you here.</p>'
 
 @app.route("/question", methods=["POST"])
 def handle_question():
-    print('Question')
+    print('question')
     data = request.json
     question = data["question"]
 
@@ -24,7 +24,6 @@ def handle_question():
     conversation_id = str(uuid.uuid4())
 
     answer_data = rag(question)
-    #answer_data = {"answer": "Test answer"}
 
     result = {
         "conversation_id": conversation_id,
@@ -32,7 +31,14 @@ def handle_question():
         "answer": answer_data["answer"],
     }
 
+    db.save_conversation(
+        conversation_id=conversation_id,
+        question=question,
+        answer_data=answer_data,
+    )
+
     return jsonify(result)
+
 
 @app.route("/feedback", methods=["POST"])
 def handle_feedback():
@@ -43,10 +49,16 @@ def handle_feedback():
     if not conversation_id or feedback not in [1, -1]:
         return jsonify({"error": "Invalid input"}), 400
 
+    db.save_feedback(
+        conversation_id=conversation_id,
+        feedback=feedback,
+    )
+
     result = {
         "message": f"Feedback received for conversation {conversation_id}: {feedback}"
     }
     return jsonify(result)
 
+
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, port=5000)
