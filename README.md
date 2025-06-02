@@ -482,7 +482,7 @@ For more information, visit the [official Flask documentation](https://flask.pal
 
 ## Acknowledgements 
 
-I thank [llm-zoomcamp-2024](https://github.com/alexkolo/llm-zoomcamp-2024/tree/main) organized by DataTalk for this course project
+I thank [llm-zoomcamp-2024](https://github.com/alexkolo/llm-zoomcamp-2024/tree/main) organized by DataTalk for this course project. Here is the course [playlist](https://www.youtube.com/watch?v=FgnelhEJFj0&list=PL3MmuxUbc_hIB4fSqLy_0AfTjVLpgjV3R&index=1) 
 
 
  
